@@ -1,3 +1,7 @@
+---
+category: "vuepress"
+tags: ["vuepress", "Github pages"]
+---
 # vuepressで作った静的サイトをGithub pagesで公開するまで
 
 ## このページで分かること
