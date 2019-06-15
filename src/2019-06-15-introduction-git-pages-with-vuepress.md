@@ -46,6 +46,8 @@ module.exports = {
     title: "tech lunch box",
     // ビルド後ファイル出力先
     dest: "docs",
+    // githubのリポジトリ名
+    base: '/tech-lunch-box/',
     markdown: {
         // ソースコードに行数を表示する。
         lineNumbers: true
