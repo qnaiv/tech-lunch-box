@@ -43,14 +43,24 @@ mkdir src/.vuepress
 ```js
 module.exports = {
     // サイト名
-    title: "tech lunch box",
+    title: "サイト名",
     // ビルド後ファイル出力先
     dest: "docs",
     // カスタムドメインを使用しない場合はbaseにgithubのリポジトリ名を設定
-    // base: '/tech-lunch-box/',
+    // base: '/リポジトリ名/',
     markdown: {
       // ソースコードに行数を表示する。
       lineNumbers: true
     }
 }
 ```
+
+ここまでの内容をcommit & pushする。
+
+## Github pagesの設定
+githubリポジトリの設定ページでsourceを`master branch/docs folder`にする。
+
+![githubpages](./github-pages-setting-1.png)
+
+## 完了
+https://`ユーザ名`.github.io/`リポジトリ名`/で表示される。
