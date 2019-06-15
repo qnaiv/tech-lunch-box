@@ -15,22 +15,37 @@ npm init
 # vuepressインストール
 npm install -D vuepress
 
-# docディレクトリ作成
+# docディレクトリ(ビルド後ファイルの出力先)作成
 mkdir docs
+
+# srcディレクトリ作成
+mkdir src
 
 # テストページ作成
 echo '# Hello VuePress' > README.md
 
 # 設定ファイルを格納するディレクトリ作成
-mkdir docs/.vuepress
+mkdir src/.vuepress
 ```
 
-## 設定ファイル作成
+## package.json編集
+`package.json`の`scripts`に以下の記述を追加する
+```
+"scripts": {
+  "dev": "vuepress dev src",
+  "build": "vuepress build src"
+},
+```
+
+
+## vuepress設定ファイル作成
 `docs/.vuepress/`に`config.js`を作成し、以下の設定を記述する。
 ```js
 module.exports = {
     // サイト名
     title: "tech lunch box",
+    // ビルド後ファイル出力先
+    dest: "docs",
     markdown: {
         // ソースコードに行数を表示する。
         lineNumbers: true

@@ -4,8 +4,8 @@
   "description": "tech blog",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
+    "dev": "vuepress dev src",
+    "build": "vuepress build src",
     "test": "test"
   },
   "repository": {
