@@ -1,0 +1,24 @@
+{
+  "name": "tech-lunch-box",
+  "version": "1.0.0",
+  "description": "tech blog",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qnaiv/tech-lunch-box.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qnaiv/tech-lunch-box/issues"
+  },
+  "homepage": "https://github.com/qnaiv/tech-lunch-box#readme",
+  "devDependencies": {
+    "vuepress": "^1.0.1"
+  }
+}
