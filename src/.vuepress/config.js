@@ -17,5 +17,10 @@ module.exports = {
   markdown: {
     // ソースコードに行数を表示する。
     lineNumbers: true
+  },
+  locales: {
+    '/': {
+      lang: 'ja',
+    }
   }
 }
