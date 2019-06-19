@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vuepress dev src --host localhost",
     "build": "vuepress build src",
-    "test": "test"
+    "test": "test",
+    "init": "install"
   },
   "repository": {
     "type": "git",

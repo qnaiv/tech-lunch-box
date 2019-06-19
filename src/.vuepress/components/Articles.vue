@@ -29,3 +29,21 @@ export default {
   }
 };
 </script>
+
+<style>
+h3 {
+  margin: 10px 0 0 0;
+}
+.tag-container {
+  min-height: 33px;
+}
+.tag {
+  display: inline-block;
+  margin: 5px 10px 5px 0px;
+  color: #585858f0;
+  font-size: 0.9em;
+  background-color: #ececec;
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+</style>
