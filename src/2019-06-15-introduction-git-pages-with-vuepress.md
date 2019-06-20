@@ -1,6 +1,7 @@
 ---
 category: "vuepress"
 tags: ["vuepress", "Github pages"]
+createAt: 2019-06-15 09:00
 ---
 # vuepressで作った静的サイトをGithub pagesで公開するまで
 

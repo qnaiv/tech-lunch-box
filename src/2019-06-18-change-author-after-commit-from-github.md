@@ -1,6 +1,7 @@
 ---
 category: "vuepress"
-tags: ["vuepress", "Github pages"]
+tags: ["Github"]
+createAt: 2019-06-18 19:30
 ---
 # gitで過去コミットのauthorとcommiterを変更する
 GitのAuthor, Comitterの設定を初期設定のまま使うと、PC名になってしまう。

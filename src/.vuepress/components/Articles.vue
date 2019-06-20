@@ -1,26 +1,27 @@
 <template>
   <div>
     <div v-for="page in filteredPages" class="article-container" v-if="!page.frontmatter.exclude">
-        <div class="article-date">
-<!--           {{page.createDate || '&nbsp;'}}
- -->          
-          <div class="create-month">JUN</div>
-          <div class="create-date">20</div>
+      <div class="article-date">
+        <div class="create-month">{{page.frontmatter.createAt | createMonth}}</div>
+        <div class="create-date">{{page.frontmatter.createAt | createDate}}</div>
+      </div>
+      <div class="article-body">
+        <h3 class="article-title">
+          <router-link :to="page.path">{{page.title || 'No Title'}}</router-link>
+        </h3>
+        <div class="tag-container">
+          <i class="fas fa-tags tag-icon"></i>
+          <div v-for="c in page.frontmatter.tags" class="tag">{{c}}</div>
         </div>
-        <div class="article-body">
-          <h3 class="article-title">
-            <router-link :to="page.path">{{page.title || 'No Title'}}</router-link>
-          </h3>
-          <div class="tag-container">
-            <i class="fas fa-tags tag-icon"></i>
-            <div v-for="c in page.frontmatter.tags" class="tag">{{c}}</div>
-          </div>
-        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
+import isNil from "lodash-es/isNil";
+
 export default {
   name: "Articles",
   props: ["pages", "prefix"],
@@ -28,31 +29,48 @@ export default {
     filteredPages() {
       return this.pages
         .filter(page => page.path.includes(this.prefix || ""))
-        .filter(page => page.path != "/");
+        .filter(page => page.path != "/")
+        .sort((a, b) => {
+          let am = moment(a.frontmatter.createAt);
+          let bm = moment(b.frontmatter.createAt);
+          if (am.isBefore(bm)) return 1;
+          if (am.isSame(bm)) return 0;
+          if (am.isAfter(bm)) return -1;
+        });
+    }
+  },
+  filters: {
+    createDate: date => {
+      if (isNil(date)) return "";
+      return moment(date).format("DD");
+    },
+    createMonth: date => {
+      if (isNil(date)) return "";
+      return moment(date).format("MMM");
     }
   }
 };
 </script>
 
 <style>
-.article-container{
-display: grid;
-grid-template-columns: 50px auto;
-grid-template-areas: "article-date article-body";
-margin-bottom: 6px;
+.article-container {
+  display: grid;
+  grid-template-columns: 50px auto;
+  grid-template-areas: "article-date article-body";
+  margin-bottom: 6px;
 }
-.article-date{
-grid-area: article-date;
+.article-date {
+  grid-area: article-date;
 }
 
-.article-date .create-month{
-  font-size: 0.8em;
+.article-date .create-month {
+  font-size: 1em;
 }
-.article-date .create-date{
-  font-size: 1.4em;
+.article-date .create-date {
+  font-size: 1.3em;
 }
-.article-body{
-grid-area: article-body;
+.article-body {
+  grid-area: article-body;
 }
 
 h3 {

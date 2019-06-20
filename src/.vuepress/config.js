@@ -1,6 +1,7 @@
 module.exports = {
   // サイト名
   title: "tech lunch box",
+  description: " ",
   themeConfig: {
     // サイトロゴ
     logo: '/lunchbox-logo.png',
