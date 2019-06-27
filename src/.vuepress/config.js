@@ -9,7 +9,11 @@ module.exports = {
     sidebar: "auto",
     sidebarDepth: 2,
     // 記事に最終更新日を自動表示する
-    lastUpdated: 'Last Updated'
+    lastUpdated: 'Last Updated',
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Posts', link: '/posts.html' },
+    ]
   },
   // ビルド後ファイル出力先
   dest: "docs",

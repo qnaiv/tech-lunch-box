@@ -5,5 +5,5 @@ footer: tech lunch box
 ---
 
 ---
-# Articles
-<Articles :pages="this.$site.pages"/>
+# Posts
+<Articles :pages="this.$site.pages" :count="3" />

@@ -10,7 +10,7 @@ createAt: 2019-06-15 09:00
 - Github pagesで静的サイトを公開する方法
 
 ## vuepressを導入する
-```powershell
+```sh
 # gitclone
 git clone [url]
 
@@ -35,7 +35,7 @@ mkdir src/.vuepress
 
 ## package.json編集
 `package.json`の`scripts`に以下の記述を追加する
-```
+```json
 "scripts": {
   "dev": "vuepress dev src",
   "build": "vuepress build src"

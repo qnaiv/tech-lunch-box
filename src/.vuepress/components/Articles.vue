@@ -24,12 +24,20 @@ import isNil from "lodash-es/isNil";
 
 export default {
   name: "Articles",
-  props: ["pages", "prefix"],
+  props: ["pages", "prefix", "count"],
+  created() {
+    console.log("aa");
+    console.log(this);
+    
+  },
   computed: {
     filteredPages() {
-      return this.pages
-        .filter(page => page.path.includes(this.prefix || ""))
-        .filter(page => page.path != "/")
+      let articles = this.pages
+        .filter(
+          page =>
+            page.path.includes(this.prefix || "") &&
+            !page.path.indexOf("/posts/")
+        )
         .sort((a, b) => {
           let am = moment(a.frontmatter.createAt);
           let bm = moment(b.frontmatter.createAt);
@@ -37,6 +45,12 @@ export default {
           if (am.isSame(bm)) return 0;
           if (am.isAfter(bm)) return -1;
         });
+      console.log(this.count);
+
+      if (!isNil(this.count) && this.count > 0) {
+        articles = articles.slice(0, this.count);
+      }
+      return articles;
     }
   },
   filters: {
@@ -55,7 +69,7 @@ export default {
 <style>
 .article-container {
   display: grid;
-  grid-template-columns: 50px auto;
+  grid-template-columns: 45px auto;
   grid-template-areas: "article-date article-body";
   margin-bottom: 6px;
 }
