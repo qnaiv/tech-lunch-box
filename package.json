@@ -7,7 +7,7 @@
     "dev": "vuepress dev src --host localhost",
     "build": "vuepress build src",
     "test": "test",
-    "init": "install"
+    "init": "npm install"
   },
   "repository": {
     "type": "git",
