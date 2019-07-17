@@ -19,51 +19,51 @@
 </template>
 
 <script>
-import moment from "moment";
-import isNil from "lodash-es/isNil";
+// import moment from "moment";
+// import isNil from "lodash-es/isNil";
 
-export default {
-  name: "Articles",
-  props: ["pages", "prefix", "count"],
-  created() {
-    console.log("aa");
-    console.log(this);
-    
-  },
-  computed: {
-    filteredPages() {
-      let articles = this.pages
-        .filter(
-          page =>
-            page.path.includes(this.prefix || "") &&
-            !page.path.indexOf("/posts/")
-        )
-        .sort((a, b) => {
-          let am = moment(a.frontmatter.createAt);
-          let bm = moment(b.frontmatter.createAt);
-          if (am.isBefore(bm)) return 1;
-          if (am.isSame(bm)) return 0;
-          if (am.isAfter(bm)) return -1;
-        });
-      console.log(this.count);
+// export default {
+//   name: "Articles",
+//   props: ["pages", "prefix", "count"],
+//   created() {
+//     console.log("aa");
+//     console.log(this);
 
-      if (!isNil(this.count) && this.count > 0) {
-        articles = articles.slice(0, this.count);
-      }
-      return articles;
-    }
-  },
-  filters: {
-    createDate: date => {
-      if (isNil(date)) return "";
-      return moment(date).format("DD");
-    },
-    createMonth: date => {
-      if (isNil(date)) return "";
-      return moment(date).format("MMM");
-    }
-  }
-};
+//   },
+//   computed: {
+//     filteredPages() {
+//       let articles = this.pages
+//         .filter(
+//           page =>
+//             page.path.includes(this.prefix || "") &&
+//             !page.path.indexOf("/posts/")
+//         )
+//         .sort((a, b) => {
+//           let am = moment(a.frontmatter.createAt);
+//           let bm = moment(b.frontmatter.createAt);
+//           if (am.isBefore(bm)) return 1;
+//           if (am.isSame(bm)) return 0;
+//           if (am.isAfter(bm)) return -1;
+//         });
+//       console.log(this.count);
+
+//       if (!isNil(this.count) && this.count > 0) {
+//         articles = articles.slice(0, this.count);
+//       }
+//       return articles;
+//     }
+//   },
+//   filters: {
+//     createDate: date => {
+//       if (isNil(date)) return "";
+//       return moment(date).format("DD");
+//     },
+//     createMonth: date => {
+//       if (isNil(date)) return "";
+//       return moment(date).format("MMM");
+//     }
+//   }
+// };
 </script>
 
 <style>
