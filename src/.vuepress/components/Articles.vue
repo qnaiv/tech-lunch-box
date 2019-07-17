@@ -2,8 +2,8 @@
   <div>
     <div v-for="page in filteredPages" class="article-container" v-if="!page.frontmatter.exclude">
       <div class="article-date">
-        <div class="create-month">{{page.frontmatter.createAt | createMonth}}</div>
-        <div class="create-date">{{page.frontmatter.createAt | createDate}}</div>
+        <div class="create-month">{{page.frontmatter.createAt | month}}</div>
+        <div class="create-date">{{page.frontmatter.createAt | date}}</div>
       </div>
       <div class="article-body">
         <h3 class="article-title">
@@ -54,11 +54,11 @@ export default {
     }
   },
   filters: {
-    createDate: date => {
+    date: date => {
       if (isNil(date)) return "";
       return moment(date).format("DD");
     },
-    createMonth: date => {
+    month: date => {
       if (isNil(date)) return "";
       return moment(date).format("MMM");
     }
