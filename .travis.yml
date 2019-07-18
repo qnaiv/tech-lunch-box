@@ -5,4 +5,5 @@ script:
   - git init
   - git add -A
   - git commit -m 'deploy'
+  - git pull
   - git push https://$github_id:$github_pass@github.com/qnaiv/tech-lunch-box.git master
