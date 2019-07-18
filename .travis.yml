@@ -1,10 +1,8 @@
 script:
   - npm run init
   - npm run build
-  - cd docs
-  - echo 'lunchbox.qnv.pw' > CNAME
+  - echo 'lunchbox.qnv.pw' > ./docs/CNAME
   - git init
   - git add -A
   - git commit -m 'deploy'
-  - git push -f https://$github_id:$github_pass@github.com/qnaiv/tech-lunch-box.git master
-  - cd ..
+  - git push https://$github_id:$github_pass@github.com/qnaiv/tech-lunch-box.git master
