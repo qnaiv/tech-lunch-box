@@ -12,7 +12,8 @@ module.exports = {
     lastUpdated: 'Last Updated',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Posts', link: '/posts.html' },
+      // { text: 'Posts', link: '/posts.html' },
+      { text: 'About me', link: '/aboutme.html' },
     ]
   },
   // ビルド後ファイル出力先
