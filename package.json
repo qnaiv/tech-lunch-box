@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/qnaiv/tech-lunch-box#readme",
   "devDependencies": {
-    "vuepress": "^1.0.1"
+    "vuepress": "^1.0.2"
   },
   "dependencies": {
-    "lodash-es": "^4.17.11",
+    "lodash-es": "^4.17.14",
     "moment": "^2.24.0"
   }
 }
