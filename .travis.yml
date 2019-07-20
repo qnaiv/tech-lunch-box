@@ -17,8 +17,9 @@
 #     git push -f git@github.com:qnaiv/tech-lunch-box.git master:gh-pages;
 #     fi
 
-script: 
-   - npm run build
+script:
+  - npm init
+  - npm run build
 deploy:
   provider: pages
   skip_cleanup: true
