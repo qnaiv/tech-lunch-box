@@ -1,7 +1,7 @@
 
 language: node_js
 before_install:
-  - openssl aes-256-cbc -K $encrypted_0975109d8020_key -iv $encrypted_0975109d8020_iv -in deploy_key.enc -out deploy_key -d
+  - openssl aes-256-cbc -K $encrypted_5a9ccd862b24_key -iv $encrypted_5a9ccd862b24_iv -in id_rsa.enc -out id_rsa -d
   - chmod 600 deploy_key
   - eval `ssh-agent -s`
   - ssh-add deploy_key
