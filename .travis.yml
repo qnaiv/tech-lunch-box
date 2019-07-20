@@ -1,8 +1,29 @@
+
+# language: node_js
+# before_install:
+#   - openssl aes-256-cbc -K $encrypted_5a9ccd862b24_key -iv $encrypted_5a9ccd862b24_iv -in id_rsa.enc -out id_rsa -d
+#   - chmod 600 deploy_key
+#   - eval `ssh-agent -s`
+#   - ssh-add deploy_key
+
+# script:
+#   - npm run init
+#   - npm run build
+#   - echo 'lunchbox.qnv.pw' > ./docs/CNAME
+#   - git init
+#   - git add -A
+#   - git commit -m 'deploy'
+#   - if [ "$TRAVIS_BRANCH" == master ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+#     git push -f git@github.com:qnaiv/tech-lunch-box.git master:gh-pages;
+#     fi
+
 script:
   - npm run init
   - npm run build
-  - echo 'lunchbox.qnv.pw' > ./docs/CNAME
-  - git init
-  - git add -A
-  - git commit -m 'deploy'
-  - git push origin master
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $github_token  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
