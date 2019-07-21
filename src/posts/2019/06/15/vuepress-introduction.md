@@ -65,7 +65,7 @@ module.exports = {
 ## Github pagesの設定
 githubリポジトリの設定ページでsourceを`master branch/docs folder`にする。
 
-![githubpages](./github-pages-setting-1.png)
+![githubpages](./vuepress-introduction-1.png)
 
 ## 完了
 https://`ユーザ名`.github.io/`リポジトリ名`/で表示される。
