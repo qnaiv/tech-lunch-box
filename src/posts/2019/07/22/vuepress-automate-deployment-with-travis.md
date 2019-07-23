@@ -11,12 +11,32 @@ createAt: 2019-07-22 18:12
 
 ## 前提条件
 以下の作業が完了していること  
-[vuepressで作った静的サイトをGithub pagesで公開するまで](/src/posts/2019/06/15/vuepress-introduction.md)
+[vuepressで作った静的サイトをGithub pagesで公開するまで](/posts/2019/06/15/vuepress-introduction.md)
 
 ## Travis CIとは
 CI/CDサービス。  
 特定のタイミング(リポジトリPush時など)で、テスト/デプロイを自動実行することができる。
-Githubのpublicリポジトリなら無料で利用することが可能。  
+Githubのpublicリポジトリなら無料で利用することが可能。
+Githubリポジトリのルートに`.travis.yml`(ジョブファイル)を作成する。
+
+## .travis.ymlについて
+
+### ジョブのライフサイクル
+ライフサイクルは以下のフェーズで構成されている。
+上から順に実行されるので、好きなフェーズをチョイスしてymlに書く。
+
+1. [任意] `apt addons`
+2. [任意] `cache components`
+3. `before_install`
+4. `install`
+5. `before_script`
+6. `script`
+7. [任意] `before_cache` (for cleaning up cache)
+8. `after_success` or `after_failure`
+9. [任意] `before_deploy`
+10. [任意] `deploy`
+11. [任意] `after_deploy`
+12. `after_script`
 
 ## 導入
 
@@ -61,3 +81,6 @@ deploy:
 ### 5. 完了
 `.travis.yml`をpushした瞬間から、自動デプロイが動くようになる。
 ![image6](./vuepress-automate-deployment-with-travis-6.png)
+
+## 今回のソース
+[https://github.com/qnaiv/automate-deploy-with-travis](https://github.com/qnaiv/automate-deploy-with-travis)
