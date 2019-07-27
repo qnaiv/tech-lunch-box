@@ -8,4 +8,4 @@ footer: tech lunch box
 
 # Posts
 
-<Articles :count="3" />
+<Articles />
