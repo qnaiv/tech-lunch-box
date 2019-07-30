@@ -3,7 +3,6 @@ category: "Infrastructure"
 tags: ["vuepress", "Github pages", "Travis CI"]
 createAt: 2019-07-22 18:12
 ---
-# Travis CIでVuepressの公開を自動化する
 
 ## このページでわかること
 - Travis CIの基礎
@@ -14,10 +13,12 @@ createAt: 2019-07-22 18:12
 [vuepressで作った静的サイトをGithub pagesで公開するまで](/posts/2019/06/15/vuepress-introduction.md)
 
 ## Travis CIとは
-CI/CDサービス。  
-特定のタイミング(リポジトリPush時など)で、テスト/デプロイを自動実行することができる。
-Githubのpublicリポジトリなら無料で利用することが可能。
-Githubリポジトリのルートに`.travis.yml`(ジョブファイル)を作成する。
+Githubのpublicリポジトリなら無料で利用できるCI/CDサービス
+
+>#### CI/CD(継続的インテグレーション/デリバリー)とは
+>ビルドやテスト、デプロイを自動化してバグの早期発見、開発効率の工場を図る仕組みのこと。
+
+`.travis.yml`をGithubリポジトリに含めるだけでジョブの設定が可能。
 
 ## .travis.ymlについて
 
