@@ -2,18 +2,19 @@ module.exports = {
   // サイト名
   title: "tech lunch box",
   description: " ",
+  ga: "UA-146509751-1",
   themeConfig: {
     // サイトロゴ
-    logo: '/lunchbox-logo.png',
+    logo: "/lunchbox-logo.png",
     // 記事にサイドバーで目次を表示する
     sidebar: "auto",
     sidebarDepth: 2,
     // 記事に最終更新日を自動表示する
-    lastUpdated: 'Last Updated',
+    lastUpdated: "Last Updated",
     nav: [
-      { text: 'Home', link: '/' },
+      { text: "Home", link: "/" },
       // { text: 'Posts', link: '/posts.html' },
-      { text: 'About me', link: '/aboutme.html' },
+      { text: "About me", link: "/aboutme/" }
     ]
   },
   // ビルド後ファイル出力先
@@ -25,8 +26,8 @@ module.exports = {
     lineNumbers: true
   },
   locales: {
-    '/': {
-      lang: 'ja',
+    "/": {
+      lang: "ja"
     }
   }
-}
+};
