@@ -13,7 +13,7 @@
 ### 利用例
 
 ログインしてからプライベート API を実行するシンプルなケース。
-![](jwt-introduction-1-97138c8a-beae-4774-ac49-d038425739e5.png)
+![](./jwt-introduction-1-97138c8a-beae-4774-ac49-d038425739e5.png)
 
 ## JWT を触ってみる
 
@@ -25,19 +25,19 @@
 
 以下の手順で JWT を生成することができる。
 
-![](jwt-introduction-2-585aa0e0-8479-4f5e-8724-27756f782341.png)
+![](./jwt-introduction-2-585aa0e0-8479-4f5e-8724-27756f782341.png)
 
 ### ②JWT を検証してみる
 
 不正な JWT を生成し、検証する。
 
-![](jwt-introduction-3-91af68e8-f0fd-414f-81c8-94bf85d1525c.png)
+![](./jwt-introduction-3-91af68e8-f0fd-414f-81c8-94bf85d1525c.png)
 
 ## 構造
 
 JWT は HEADER, PAYLOAD, SIGNATURE の 3 つの要素で構成され、「.(ピリオド)」で区切られている。
 
-![](jwt-introduction-4-6d8dce6d-e682-414b-9330-d5d074cd301e.png)
+![](./jwt-introduction-4-6d8dce6d-e682-414b-9330-d5d074cd301e.png)
 
 1. HEADER
 
@@ -57,7 +57,7 @@ JWT は HEADER, PAYLOAD, SIGNATURE の 3 つの要素で構成され、「.(ピ�
 
    - **※PAYLOAD は暗号化されておらず、JWT を盗聴されると簡単に中身を確認可能なのでパスワード等の情報は入れないこと。**
 
-     ![](jwt-introduction-4-79083ea9-7059-426a-81c4-2976ea7f9742.png)
+     ![](./jwt-introduction-4-79083ea9-7059-426a-81c4-2976ea7f9742.png)
 
 3. VERIFY SIGNATURE
    - 署名情報を格納する。
