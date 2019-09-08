@@ -3,6 +3,10 @@ module.exports = {
   title: "tech lunch box",
   description: " ",
   ga: "UA-146509751-1",
+  head: [
+    ['link', { rel: 'icon', href: 'favicon.ico' }],
+    ['link', { rel: 'apple-touch-icon', href: 'apple-touch-icon.png' }]
+  ],
   themeConfig: {
     // サイトロゴ
     logo: "/lunchbox-logo.png",
