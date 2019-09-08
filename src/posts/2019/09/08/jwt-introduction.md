@@ -1,3 +1,8 @@
+---
+category: "programming"
+tags: ["JWT"]
+createAt: 2019-09-08 22:00
+---
 # JWT についてまとめ
 
 仕事で初めて JWT に触れる機会があったので、まとめる。
