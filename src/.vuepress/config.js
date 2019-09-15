@@ -1,12 +1,17 @@
+const feed_options = {
+  canonical_base: "https://webmasterish.com"
+};
+
 module.exports = {
   // サイト名
   title: "tech lunch box",
   description: " ",
   ga: "UA-146509751-1",
   head: [
-    ['link', { rel: 'icon', href: 'favicon.ico' }],
-    ['link', { rel: 'apple-touch-icon', href: 'apple-touch-icon.png' }]
+    ["link", { rel: "icon", href: "favicon.ico" }],
+    ["link", { rel: "apple-touch-icon", href: "apple-touch-icon.png" }]
   ],
+  plugins: [["feed", feed_options]],
   themeConfig: {
     // サイトロゴ
     logo: "/lunchbox-logo.png",
@@ -18,7 +23,7 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       // { text: 'Posts', link: '/posts.html' },
-      { text: "About me", link: "/aboutme/" }
+      { text: "About me", link: "https://portfolio.forkwell.com/@qnaiv" }
     ]
   },
   // ビルド後ファイル出力先

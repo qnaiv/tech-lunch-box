@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/qnaiv/tech-lunch-box#readme",
   "devDependencies": {
-    "vuepress": "^1.0.2"
+    "vuepress": "^1.0.2",
+    "vuepress-plugin-feed": "^0.1.7"
   },
   "dependencies": {
     "lodash-es": "^4.17.14",
