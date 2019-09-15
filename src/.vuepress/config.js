@@ -6,12 +6,19 @@ module.exports = {
   // サイト名
   title: "tech lunch box",
   description: " ",
-  ga: "UA-146509751-1",
   head: [
     ["link", { rel: "icon", href: "favicon.ico" }],
     ["link", { rel: "apple-touch-icon", href: "apple-touch-icon.png" }]
   ],
-  plugins: [["feed", feed_options]],
+  plugins: [
+    ["feed", feed_options],
+    [
+      "@vuepress/google-analytics",
+      {
+        ga: "UA-146509751-1"
+      }
+    ]
+  ],
   themeConfig: {
     // サイトロゴ
     logo: "/lunchbox-logo.png",
