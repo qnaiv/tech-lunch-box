@@ -1,24 +1,41 @@
-# Githubのコミッター名をGithubアカウントと同じにする
-Githubに`git push`する際、Githubのアカウント名義でコミットする方法が分かりづらかった。
+---
+tags: ["Github"]
+createAt: 2019-09-16 16:00
+---
+
+# Github のコミッター名を Github アカウントと同じにする
+
+Github に`git push`する際、Github のアカウント名義でコミットする方法が分かりづらかった。
 
 ![image1](./change-git-committer1.png)
 
-## git configでメールアドレスを設定する
-以下のコマンドでuser.emailを設定する。
+## git config でメールアドレスを設定する
 
-` git config --global user.email="メールアドレス"`
+以下のコマンドで user.email を設定する。
+
+全ての設定を変える場合:
+
+`git config --global user.email="メールアドレス"`
+
+リポジトリ単位で設定する場合:
+
+`git config --local user.email="メールアドレス"`
 
 ## 重要ポイント
-user.emailに設定するアドレスを間違えててつまずいた。
 
-Githubでメールアドレスを…
+user.email に設定するアドレスを間違えててつまずいた。
+
+Github でメールアドレスを…
 
 **公開状態にしている場合**
-- Githubに登録したメールアドレスをそのまま設定する。
+
+- Github に登録したメールアドレスをそのまま設定する。
 
 **非公開状態にしている場合**
-- noreplyメールアドレスを設定する。
 
-## noreplyメールアドレスの確認方法
+- noreply メールアドレスを設定する。
+
+## noreply メールアドレスの確認方法
+
 **Keep my email addressses private**(メールアドレスを非公開にする)にチェックがついている場合、赤枠で囲んだ部分に書かれているメールアドレスを`user.email`に設定する必要がある。
 ![image2](./change-git-committer2.png)
