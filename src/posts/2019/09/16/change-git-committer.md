@@ -3,9 +3,9 @@ tags: ["Github"]
 createAt: 2019-09-16 16:00
 ---
 
-# Github のコミッター名を Github アカウントと同じにする
+# git push 時のコミッター名が Github アカウントと一致しない問題
 
-Github に`git push`する際、Github のアカウント名義でコミットする方法が分かりづらかった。
+Github に`git push`する際、Github のアカウント名義でコミットするのに手間取ったのでメモ。
 
 ![image1](./change-git-committer1.png)
 
