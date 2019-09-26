@@ -1,3 +1,8 @@
+---
+tags: ["VSCode"]
+createAt: 2019-09-23 15:00
+---
+
 # VSCode で Cascadia code を利用する
 
 Microsoft が 9 月 18 日に発表したターミナル/コードエディタに最適化されたフォント「Cascadia code」を VS Code に導入してみた。
