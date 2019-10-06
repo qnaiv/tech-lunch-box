@@ -11,7 +11,7 @@
         </h3>
         <div class="tag-container">
           <i class="fas fa-tags tag-icon"></i>
-          <div v-for="c in page.frontmatter.tags" class="tag">{{c}}</div>
+          <div v-for="c in page.frontmatter.tags" class="tag" v-on:click="selectTag(c)">{{c}}</div>
         </div>
       </div>
     </div>
@@ -25,11 +25,7 @@ import isNil from "lodash-es/isNil";
 export default {
   name: "Articles",
   props: ["prefix", "count"],
-  created() {
-    console.log("aa");
-    console.log(this);
-
-  },
+  created() {},
   computed: {
     filteredPages() {
       let articles = this.$site.pages
@@ -38,6 +34,12 @@ export default {
             page.path.includes(this.prefix || "") &&
             !page.path.indexOf("/posts/")
         )
+        .filter(page => {
+          return (
+            this.$route.query.tag == null ||
+            page.frontmatter.tags.some(tag => tag === this.$route.query.tag)
+          );
+        })
         .sort((a, b) => {
           let am = moment(a.frontmatter.createAt);
           let bm = moment(b.frontmatter.createAt);
@@ -45,7 +47,6 @@ export default {
           if (am.isSame(bm)) return 0;
           if (am.isAfter(bm)) return -1;
         });
-      console.log(this.count);
 
       if (!isNil(this.count) && this.count > 0) {
         articles = articles.slice(0, this.count);
@@ -61,6 +62,12 @@ export default {
     month: date => {
       if (isNil(date)) return "";
       return moment(date).format("MMM");
+    }
+  },
+  methods: {
+    selectTag(t) {
+      console.log("select tag article");
+      this.$router.push({ query: { tag: t } });
     }
   }
 };

@@ -1,40 +1,47 @@
 <template>
   <div>
-    <div v-for="tag in getTags" class="tag">{{tag}}</div>
+    <div
+      v-for="tag in getTags"
+      v-bind:class="{active: isActive(tag)}"
+      class="tag"
+      v-on:click="selectTag(tag)"
+    >{{tag}}</div>
   </div>
 </template>
 
 <script>
-// import moment from "moment";
-// import isNil from "lodash-es/isNil";
-// import uniq from "lodash-es/uniq";
+import moment from "moment";
+import isNil from "lodash-es/isNil";
+import uniq from "lodash-es/uniq";
 
-// export default {
-//   name: "Tags",
-//   props: ["pages"],
-//   computed: {
-//     getTags() {
-//       return this.pages
-//         .filter(page => page.path.includes(this.prefix || ""))
-//         .filter(page => !page.path.indexOf("/posts/"))
-//         .flatMap(page => {
-//           return page.frontmatter.tags;
-//         })
-//         .filter(tag => !isNil(tag))
-//         .filter((elem, index, self) => self.indexOf(elem) === index);
-//     }
-//   },
-//   filters: {
-//     createDate: date => {
-//       if (isNil(date)) return "";
-//       return moment(date).format("DD");
-//     },
-//     createMonth: date => {
-//       if (isNil(date)) return "";
-//       return moment(date).format("MMM");
-//     }
-//   }
-// };
+export default {
+  name: "Tags",
+  props: [],
+  computed: {
+    getTags() {
+      return this.$site.pages
+        .filter(page => page.path.includes(this.prefix || ""))
+        .filter(page => !page.path.indexOf("/posts/"))
+        .flatMap(page => {
+          return page.frontmatter.tags;
+        })
+        .filter(tag => !isNil(tag))
+        .filter((elem, index, self) => self.indexOf(elem) === index);
+    }
+  },
+  methods: {
+    selectTag(tag) {
+      if (this.$route.query.tag === tag) {
+        this.$router.push({ query: { tag: null } });
+      } else {
+        this.$router.push({ query: { tag: tag } });
+      }
+    },
+    isActive(tag) {
+      return tag === this.$route.query.tag;
+    }
+  }
+};
 </script>
 
 <style>
@@ -49,5 +56,9 @@
   background-color: #ececec;
   border-radius: 5px;
   padding: 2px 7px;
+}
+.tag.active {
+  background-color: #3eaf7c;
+  color: white;
 }
 </style>

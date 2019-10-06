@@ -6,6 +6,6 @@ footer: tech lunch box
 
 ---
 
-# Posts
+# Recent Posts
 
-<Articles />
+<Articles :count="4" />

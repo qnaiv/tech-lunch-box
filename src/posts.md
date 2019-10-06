@@ -3,6 +3,7 @@ sidebar: false
 ---
 
 # Tags
-<Tags :pages="this.$site.pages"/>
+
+<Tags />
 # Posts
-<Articles :pages="this.$site.pages"/>
+<Articles />
