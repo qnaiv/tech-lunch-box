@@ -67,7 +67,7 @@ export default {
   methods: {
     selectTag(t) {
       console.log("select tag article");
-      this.$router.push({ query: { tag: t } });
+      this.$router.push({ path: "/posts", query: { tag: t } });
     }
   }
 };
