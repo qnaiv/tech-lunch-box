@@ -19,14 +19,18 @@ export default {
   props: [],
   computed: {
     getTags() {
-      return this.$site.pages
-        .filter(page => page.path.includes(this.prefix || ""))
-        .filter(page => !page.path.indexOf("/posts/"))
-        .flatMap(page => {
-          return page.frontmatter.tags;
-        })
-        .filter(tag => !isNil(tag))
-        .filter((elem, index, self) => self.indexOf(elem) === index);
+      let pages = this.$site.pages;
+      return (
+        pages
+          .filter(page => page.path.includes(this.prefix || ""))
+          .filter(page => !page.path.indexOf("/posts/"))
+          .reduce((flat, item) => flat.concat(item.frontmatter.tags), [])
+          // .flatMap(page => {
+          //   return page.frontmatter.tags;
+          // })
+          .filter(tag => !isNil(tag))
+          .filter((elem, index, self) => self.indexOf(elem) === index)
+      );
     }
   },
   methods: {
