@@ -60,6 +60,11 @@ export default {
   background-color: #ececec;
   border-radius: 5px;
   padding: 2px 7px;
+  cursor: pointer;
+}
+.tag:hover {
+    background-color: #79cda7;
+    color: white;
 }
 .tag.active {
   background-color: #3eaf7c;
