@@ -1,6 +1,6 @@
 ---
 tags: ["Linux", "VPS", "Conoha"]
-createAt: 2019-10-26 20:00
+createAt: 2019-10-27 20:00
 ---
 
 # VPS をレンタルしたときの初期設定
@@ -9,50 +9,85 @@ conoha を借りて初期設定をしたのでメモ。
 
 ## 手順
 
-1. ユーザ作成
-2. SSH 鍵設定 & root ログイン禁止
-3. SSH ポート変更
-4. VSCode に SSH 接続の設定をする
+1. SSH 接続する
+2. ユーザ作成
+3. SSH 鍵作成
+4. sshd_config 編集
 
-## 1. ユーザ作成
+## 1. SSH 接続する
+
+[VSCode で SSH 接続する](/posts/2019/10/26/ssh-connection-with-vscode.html)
+
+## 2. ユーザ作成
 
 レンタルした直後は root ユーザしかないので新しいユーザを作る
 
 ```sh
-adduser ユーザ名
-passwd ユーザ名
+adduser 新規ユーザ名 #ユーザ作成
+passwd 新規ユーザ名 #パスワード設定
 ```
 
 そして wheel グループに追加
 
 ```sh
-gpasswd -a ユーザ名 wheel
+gpasswd -a 新規ユーザ名 wheel
+su 新規ユーザ名
+sudo id #sudoできるか確認
 ```
 
-## 2. SSH 鍵設定 & root ログイン禁止
+::: tip wheel ユーザ
+sudo 権限を持つグループ
+:::
 
-暗号鍵を作成し、作ったユーザに設定する。
+## 2. SSH 鍵作成
 
-下記の記事の通り、鍵を作り SCP で配置した。
-この記事には、root ログ禁止まで手順が書いてある。
-が、やる前に作ったユーザで鍵認証でログインできるか確認しよう。
-[https://www.conoha.jp/guide/addusersshkey.php:embed:cite]
+```sh
+#新規ユーザで行う
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096
+mv id_rsa.pub authorized_keys #公開鍵のほうをauthorized_keysにリネーム
+chmod 600 authorized_keys
+```
 
-## 3. SSH ポート変更
+## 3. SSH 秘密鍵をクライアント側にダウンロードする
 
-SSH ポートがデフォルトの 22 だと攻撃されまくるので変更する。
+id_rsa(秘密鍵)のほうをクライアントの.ssh ディレクトリに置く。
 
-まずは ssh で使うポートを変更する。
+config ファイルを編集し、`IdentityFile`に秘密鍵のパスを指定する。
+
+```
+Host 任意の接続名
+HostName ホスト名
+User ユーザー名
+Port ポート番号
+IdentityFile 鍵の場所(例: ~/.ssh/test.key)
+```
+
+## 3. sshd_config 変更
+
+sshd_config で以下の項目を変更する。
+
+- 鍵認証設定
+- SSH ポート変更(デフォルトの 22 だと攻撃されまくるので変更する)
+- root ログインを禁止する
+- パスワードログイン禁止
 
 ```sh
 sudo vi /etc/ssh/sshd_config
-```
 
-以下のように書き換える。
+#Port 22
+Port 49152 #49152〜65535 がいいらしい。
 
-```sh
-[-]Port 22
-[+]Port 49152 #49152〜65535 がいいらしい。
+#PermitRootLogin yes
+PermitRootLogin no #rootログイン禁止
+
+RSAAuthentication yes #追記
+
+PubkeyAuthentication yes #コメントアウト解除
+
+#パスワードログイン禁止
+#PasswordAuthentication yes
+PasswordAuthentication no #パスワードログイン禁止
 ```
 
 sshd を再起動する。
@@ -62,7 +97,6 @@ sudo systemctl restart sshd
 ```
 
 次に、firewalld のポート開放設定を変更する。
-ssh.xml を/etc/firewalld/services/にコピーし、中に書いてある port 設定部分を書き換える。
 
 ```sh
 sudo cp /usr/lib/firewalld/services/ssh.xml /etc/firewalld/services/
@@ -70,8 +104,6 @@ sudo vi /etc/firewalld/services/ssh.xml
 sudo firewall-cmd --reload # 設定反映
 ```
 
-## 4. VSCode に SSH 接続の設定をする
+## 参考
 
-以下を参照。
-
-[VSCode で SSH 接続する](/posts/2019/10/26/ssh-connection-with-vscode.html)
+[https://www.conoha.jp/guide/addusersshkey.php](https://www.conoha.jp/guide/addusersshkey.php)
