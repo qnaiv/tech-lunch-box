@@ -9,8 +9,8 @@ createAt: 2020-02-03 00:00
 
 ## Firebase 導入
 
-> 参考:  
-> https://firebase.google.com/docs/cli?hl=ja
+参考:  
+[https://firebase.google.com/docs/cli?hl=ja](https://firebase.google.com/docs/cli?hl=ja)
 
 ### Google アカウントを用意
 
@@ -47,7 +47,7 @@ firebase init //プロジェクトディレクトリにfirebaseを設定
 
 public ディレクトリに`index.html` を作成。
 
-```html
+```
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-messaging.js"></script>
 <script>
@@ -127,5 +127,4 @@ firebase deploy
 `firebase-messaging-sw.js`では、メッセージ受信時の処理を書くことができる。
 Web アプリがフォアグラウンド時、バックグラウンド時、閉じられている時で処理を分けて書く。
 
-> 参考:  
-> https://firebase.google.com/docs/cloud-messaging/js/receive?hl=ja#handle_messages_when_your_web_app_is_in_the_foreground
+[https://firebase.google.com/docs/cloud-messaging/js/receive?hl=ja#handle_messages_when_your_web_app_is_in_the_foreground](https://firebase.google.com/docs/cloud-messaging/js/receive?hl=ja#handle_messages_when_your_web_app_is_in_the_foreground)
