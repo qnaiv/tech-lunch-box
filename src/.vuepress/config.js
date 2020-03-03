@@ -29,7 +29,8 @@ module.exports = {
     lastUpdated: "Last Updated",
     nav: [
       { text: "Home", link: "/" },
-      { text: "Posts", link: "/posts.html" }
+      { text: "Posts", link: "/posts.html" },
+      { text: "Github", link: "https://github.com/qnaiv"}
       // { text: "About\ me", link: "https://portfolio.forkwell.com/@qnaiv" }
     ]
   },
