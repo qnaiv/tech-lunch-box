@@ -127,7 +127,7 @@ class Application(){
 		VideoPlayer niconicoPlayer =
 			// ニコニコから取得！ 
 			new VideoPlayer(new NiconicoVideoRepository());
-		niconicoPlayer.play("youtube douga");
+		niconicoPlayer.play("niconico douga");
     }
 }
 ```
