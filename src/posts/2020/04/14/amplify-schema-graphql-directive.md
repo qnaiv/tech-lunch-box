@@ -7,7 +7,7 @@ createAt: 2020-04-14 23:00
 
 schema.graphqlで利用可能な3つのディレクティブについて。
 ## 参考
-https://aws-amplify.github.io/docs/cli-toolchain/graphql
+[https://aws-amplify.github.io/docs/cli-toolchain/graphql](https://aws-amplify.github.io/docs/cli-toolchain/graphql)
 
 ## @model
 @modelをつける事で、デフォルトで以下のリソースが自動作成される。
@@ -18,6 +18,14 @@ https://aws-amplify.github.io/docs/cli-toolchain/graphql
 - 8つのリゾルバ(create, update, delete, get, list, onCreate, onUpdate, onDelete)。ただし`queries`, `mutations`,` subscriptions`などの引数を@modelにつける必要あり。
 - create, update, delete操作をする際に用いる入力オブジェクト
 - レコードや項目を絞り込むためのフィルターオブジェクト
+
+```graphql
+type Order @model {
+    email: String!
+    createdAt: String!
+    orderId: ID!
+}
+```
 
 ## @key
 @keyをつけることで、パーティションキーとソートキーを指定できる。
@@ -47,8 +55,8 @@ type Post @model @auth(rules: [{allow: owner}]) {
   title: String!
 }
 ```
-`@auth(rules: [{allow: owner}])`は、以下の記述の省略記法である。
-(「CRUD操作全て」において、「`owner`フィールドがログインユーザIDと同じ」データしか取得できなくなる。)
+`@auth(rules: [{allow: owner}])`は、以下の記述の省略記法であり、
+「CRUD操作全て」において、「`owner`フィールドがログインユーザIDと同じ」データしか取得できなくなる。
 ``` graphql
 @auth(
     rules: [
