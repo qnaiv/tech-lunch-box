@@ -17,9 +17,23 @@ module.exports = {
       {
         ga: "UA-146509751-1"
       }
+    ],
+    [
+      "sitemap",
+      {
+        hostname: 'https://lunchbox.qnv.pw/',
+        changefreq: "weekly"
+      }
+    ],
+    [
+      'seo', {
+        description: ($page, $site) => $page.frontmatter.description || ($page.excerpt && $page.excerpt.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "")) || $site.description || "",
+        title: ($page, $site) => $page.title || $site.title,
+      }
     ]
   ],
   themeConfig: {
+    domain: 'https://lunchbox.qnv.pw',
     // サイトロゴ
     logo: "/lunchbox-logo.png",
     // 記事にサイドバーで目次を表示する
